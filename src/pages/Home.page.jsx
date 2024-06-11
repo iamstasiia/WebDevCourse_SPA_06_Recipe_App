@@ -1,5 +1,6 @@
 import Search from "../components/Search.component";
 import List from "../components/List.component";
+import './Home.page.scss';
 
 function Home() {  
     return (
