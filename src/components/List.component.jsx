@@ -1,15 +1,17 @@
 import { useContext } from "react";
 import { QueryContext } from "../contexts/Query.context";
-import { NavLink } from "react-router-dom";
+import RecipeCard from "./RecipeCard.component";
 
 function List() {
-    const { recipes } = useContext(QueryContext);
+    const { query, recipes } = useContext(QueryContext);
 
     return (
-        <ul>
-            <h2>Recipes:</h2>
-            {recipes.map((recipe, index) => (<li key={index}><NavLink to={`/${recipe.recipe.label}`} >{recipe.recipe.label}</NavLink></li>))}
-        </ul>
+        <>
+            <h2>Recipes with {query}:</h2>
+            <ul>
+                {recipes.map((recipeObj, index) => <RecipeCard key={index} recipeObj={recipeObj} />)}
+            </ul>
+        </> 
     );
 }
 
