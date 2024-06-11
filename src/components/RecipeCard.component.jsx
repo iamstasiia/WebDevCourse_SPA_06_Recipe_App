@@ -37,10 +37,9 @@ const Card = styled.div`
 `
 
 function RecipeCard({ recipeObj, index }) {
-    console.log(recipeObj);
 
     return (
-        <li key={index}><NavLink to={`/${recipeObj.recipe.label}`} style={{textDecoration: 'none'}}><Card $imgUrl={recipeObj.recipe.image}><p>{recipeObj.recipe.label}</p></Card></NavLink></li> 
+        <li key={index}><NavLink to={`/recipes/${recipeObj.recipe.label}`} style={{textDecoration: 'none'}}><Card $imgUrl={recipeObj.recipe.image}><p>{recipeObj.recipe.label}</p></Card></NavLink></li> 
     );
 }
 
