@@ -3,7 +3,7 @@ import { createContext, useState, useEffect } from "react";
 export const QueryContext = createContext();
 
 export const QueryProvider = ({ children }) => {
-    const [query, setQuery] = useState("avocado");
+    const [query, setQuery] = useState("fish");
     const [recipes, setRecipes] = useState([]);
 
     console.log(query);
