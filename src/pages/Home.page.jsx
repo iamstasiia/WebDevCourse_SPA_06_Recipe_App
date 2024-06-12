@@ -1,5 +1,6 @@
 import Search from "../components/Search.component";
 import List from "../components/List.component";
+import Footer from "../components/Footer.component";
 import './Home.page.scss';
 
 function Home() {  
@@ -12,6 +13,7 @@ function Home() {
             <main>
                 <List />
             </main>
+            <Footer />
         </>
     );
 }
