@@ -5,8 +5,10 @@ function Search() {
     const [search, setSearch] = useState('');
     const onSubmitHandler = (event) => {
         event.preventDefault();
-        changeQuery(search);
-        setSearch('');
+        if (search.length !== 0) {
+            changeQuery(search);
+            setSearch('');
+        }
     }
 
     const { changeQuery } = useContext(QueryContext);
