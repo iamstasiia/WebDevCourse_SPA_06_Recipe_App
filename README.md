@@ -23,4 +23,4 @@
 -   **Context API (createContext, useContext):** For state management across the application.
 -   **API Integration:** Fetching recipe data from an external API.
 
-<a href="https://culinary-delights.vercel.app/recipes" target="_blank">Try this >>></a>
+Check out the live demo [here](https://culinary-delights.vercel.app/recipes) (open in a new tab)
