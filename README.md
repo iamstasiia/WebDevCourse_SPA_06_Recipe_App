@@ -1,8 +1,24 @@
-# React + Vite
+# Culinary Delights
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Overview
 
-Currently, two official plugins are available:
+**_Culinary Delights_** is a React.js web application that allows users to search for recipes based on ingredients. By entering a specific ingredient in the search form, users can view a list of recipes that include that ingredient. Each recipe is displayed as a card with an image and title. Clicking on a card navigates the user to a detailed page with comprehensive information about the recipe.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Features
+
+-   **Ingredient Search:** Enter an ingredient in the search form on the homepage to fetch a list of recipes that use that ingredient.
+-   **Recipe Cards:** View recipes as cards displaying the dish image and name.
+-   **Detailed Recipe Page:** Click on a recipe card to see detailed information including:
+    -   Dish image
+    -   List of ingredients
+    -   Number of servings
+    -   Calories per serving
+    -   Fat content
+    -   Percentage of daily nutritional value
+
+### Technologies Used
+
+-   **React.js:** For building the user interface.
+-   **React Router:** For navigating between pages.
+-   **Context API (createContext, useContext):** For state management across the application.
+-   **API Integration:** Fetching recipe data from an external API.
