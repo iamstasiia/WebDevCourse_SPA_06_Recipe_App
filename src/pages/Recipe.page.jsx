@@ -1,37 +1,35 @@
 import { useContext } from "react";
 import { QueryContext } from "../contexts/Query.context";
-import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer.component";
 import "./Recipe.page.scss";
 
 function RecipePage() {
-    const { recipes } = useContext(QueryContext);
-    const { recipeLabel } = useParams();
+    const { recipes, recipeLabel } = useContext(QueryContext);
 
-    const recipe = recipes.find(
-        (recipeObj) => recipeObj.recipe.label === String(recipeLabel),
-    );
-    console.log(recipe);
+    const recipe = recipes.find((recipeObj) => recipeObj.recipe.label === String(recipeLabel));
+
+    if (!recipe) {
+        return (
+            <div className="recipe-page-container">
+                <h2>Recipe not found</h2>
+                <Link to="/recipes" className="go-back-button">
+                    Go back
+                </Link>
+            </div>
+        );
+    }
 
     return (
         <>
-            <div
-                className="recipe-page-container"
-                style={{ backgroundImage: `url(${recipe.recipe.image})` }}
-            >
+            <div className="recipe-page-container" style={{ backgroundImage: `url(${recipe.recipe.image})` }}>
                 <article>
                     <div>
                         <h1>{recipe.recipe.label}</h1>
                         <small>{recipe.recipe.mealType}</small>
                         <div>
                             <div>
-                                <strong>
-                                    {Math.round(
-                                        recipe.recipe.calories /
-                                            recipe.recipe.yield,
-                                    )}
-                                </strong>
+                                <strong>{Math.round(recipe.recipe.calories / recipe.recipe.yield)}</strong>
                                 <p>calories/serving</p>
                             </div>
                             <div>
@@ -40,15 +38,8 @@ function RecipePage() {
                             </div>
                             <div>
                                 <strong>
-                                    {Math.round(
-                                        recipe.recipe.digest[0].total /
-                                            recipe.recipe.yield,
-                                    )}
-                                    g (
-                                    {Math.round(
-                                        recipe.recipe.digest[0].daily /
-                                            recipe.recipe.yield,
-                                    )}
+                                    {Math.round(recipe.recipe.digest[0].total / recipe.recipe.yield)}g (
+                                    {Math.round(recipe.recipe.digest[0].daily / recipe.recipe.yield)}
                                     %)
                                 </strong>
                                 <p>fat</p>
@@ -66,7 +57,7 @@ function RecipePage() {
                             Go back
                         </Link>
                     </div>
-                <Footer />
+                    <Footer />
                 </article>
             </div>
         </>

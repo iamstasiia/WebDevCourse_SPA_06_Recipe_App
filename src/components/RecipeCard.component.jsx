@@ -1,5 +1,8 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { QueryContext } from "../contexts/Query.context";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const Card = styled.div`
     width: 250px;
@@ -11,7 +14,7 @@ const Card = styled.div`
 
     &:after {
         content: "";
-        background: url(${props => props.$imgUrl});
+        background: url(${(props) => props.$imgUrl});
         width: 100%;
         z-index: -1;
         position: absolute;
@@ -28,19 +31,37 @@ const Card = styled.div`
 
     p {
         background: black;
-        color: #EEE;
+        color: #eee;
         position: absolute;
         width: 100%;
         bottom: 1.5rem;
         padding: 0.25rem 0.5rem;
     }
-`
+`;
 
 function RecipeCard({ recipeObj, index }) {
+    const { changeRecipeLabel } = useContext(QueryContext);
 
     return (
-        <li key={index}><NavLink to={`/recipes/${recipeObj.recipe.label}`} style={{textDecoration: 'none'}}><Card $imgUrl={recipeObj.recipe.image}><p>{recipeObj.recipe.label}</p></Card></NavLink></li> 
+        <li key={index}>
+            <NavLink
+                to={`/recipes/${recipeObj.recipe.label}`}
+                style={{ textDecoration: "none" }}
+                onClick={() => {
+                    changeRecipeLabel(recipeObj.recipe.label);
+                }}
+            >
+                <Card $imgUrl={recipeObj.recipe.image}>
+                    <p>{recipeObj.recipe.label}</p>
+                </Card>
+            </NavLink>
+        </li>
     );
 }
+
+RecipeCard.propTypes = {
+    recipeObj: PropTypes.object,
+    index: PropTypes.number,
+};
 
 export default RecipeCard;
