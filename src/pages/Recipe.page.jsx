@@ -12,7 +12,7 @@ function RecipePage() {
     if (!recipe) {
         return (
             <div className="recipe-page-container">
-                <h2>Recipe not found</h2>
+                <h2>Loading...</h2>
                 <Link to="/recipes" className="go-back-button">
                     Go back
                 </Link>
@@ -21,46 +21,43 @@ function RecipePage() {
     }
 
     return (
-        <>
-            <div className="recipe-page-container" style={{ backgroundImage: `url(${recipe.recipe.image})` }}>
-                <article>
+        <div className="recipe-page-container">
+            <div className="recipe-img" style={{ backgroundImage: `url(${recipe.recipe.image})` }}></div>
+            <article>
+                <p className="meal-type">{recipe.recipe.mealType}</p>
+                <h1>{recipe.recipe.label}</h1>
+
+                <div className="serving-group">
                     <div>
-                        <h1>{recipe.recipe.label}</h1>
-                        <small>{recipe.recipe.mealType}</small>
-                        <div>
-                            <div>
-                                <strong>{Math.round(recipe.recipe.calories / recipe.recipe.yield)}</strong>
-                                <p>calories/serving</p>
-                            </div>
-                            <div>
-                                <strong>{recipe.recipe.yield}</strong>
-                                <p>servings</p>
-                            </div>
-                            <div>
-                                <strong>
-                                    {Math.round(recipe.recipe.digest[0].total / recipe.recipe.yield)}g (
-                                    {Math.round(recipe.recipe.digest[0].daily / recipe.recipe.yield)}
-                                    %)
-                                </strong>
-                                <p>fat</p>
-                            </div>
-                        </div>
-
-                        <ul>
-                            <h3>Ingredients:</h3>
-                            {recipe.recipe.ingredients.map((item, index) => (
-                                <li key={index}>{item.text}</li>
-                            ))}
-                        </ul>
-
-                        <Link to="/recipes" className="go-back-button">
-                            Go back
-                        </Link>
+                        <strong>{Math.round(recipe.recipe.calories / recipe.recipe.yield)}</strong>
+                        <p>calories/serving</p>
                     </div>
-                    <Footer />
-                </article>
-            </div>
-        </>
+                    <div>
+                        <strong>{recipe.recipe.yield}</strong>
+                        <p>servings</p>
+                    </div>
+                    <div>
+                        <strong>
+                            {Math.round(recipe.recipe.digest[0].total / recipe.recipe.yield)}g (
+                            {Math.round(recipe.recipe.digest[0].daily / recipe.recipe.yield)}
+                            %)
+                        </strong>
+                        <p>fat</p>
+                    </div>
+                </div>
+
+                <ul className="ingredients-group">
+                    <h3>Ingredients:</h3>
+                    {recipe.recipe.ingredients.map((item, index) => (
+                        <li key={index}>{item.text}</li>
+                    ))}
+                </ul>
+                <Link to="/recipes" className="go-back-button">
+                    Go back
+                </Link>
+            </article>
+            <Footer />
+        </div>
     );
 }
 
