@@ -25,11 +25,15 @@
         margin: -19% auto 0;
         position: relative;
         z-index: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
 
         .meal-type {
             font-style: italic;
-            background: black;
-            color: #f8f8f8;
+            font-weight: bold;
+            background: #fb8c00;
+            color: black;
             padding: 0.1rem 0.5rem 0.1rem 1rem;
             position: absolute;
             right: 0;
@@ -43,7 +47,6 @@
         }
 
         .serving-group {
-            margin: 1.5rem 0 1rem;
             display: flex;
             justify-content: center;
             gap: 1px;
@@ -67,18 +70,13 @@
             }
         }
 
-        ul.ingredients-group {
-            list-style: none;
+        h3 {
             padding: 0 2rem;
+        }
 
-            h3 {
-                margin-bottom: 0.5rem;
-                margin-top: 2.5rem;
-            }
-
-            li {
-                padding-left: 1rem;
-            }
+        ul.ingredients-group {
+            list-style: square;
+            padding: 0 2rem 0 4rem;
         }
 
         .go-back-button {
@@ -88,11 +86,10 @@
             font-size: 1.5rem;
             padding: 0.75rem 1.25rem 0.75rem;
             outline: 0;
-
             background-color: transparent;
             display: block;
             width: fit-content;
-            margin: 2rem auto;
+            margin: 1rem auto;
             position: relative;
 
             &:after {
@@ -111,6 +108,19 @@
                 top: 0px;
                 left: 0px;
             }
+        }
+    }
+}
+
+@media (max-width: 40rem) {
+    .recipe-page-container article {
+        h1,
+        h3 {
+            padding: 0 1rem;
+        }
+
+        ul.ingredients-group {
+            padding: 0 2rem 0 3rem;
         }
     }
 }
