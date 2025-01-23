@@ -50,8 +50,8 @@ function RecipePage() {
                     </div>
                 </div>
 
+                <h3>Ingredients:</h3>
                 <ul className="ingredients-group">
-                    <h3>Ingredients:</h3>
                     {recipe.recipe.ingredients.map((item, index) => (
                         <li key={index}>{item.text}</li>
                     ))}
