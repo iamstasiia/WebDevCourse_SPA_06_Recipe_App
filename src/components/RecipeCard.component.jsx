@@ -39,7 +39,7 @@ const Card = styled.div`
     }
 `;
 
-function RecipeCard({ recipeObj, index }) {
+function RecipeCard({ recipeObj, index, forwardHandler }) {
     const { changeRecipeLabel } = useContext(QueryContext);
 
     return (
@@ -49,6 +49,7 @@ function RecipeCard({ recipeObj, index }) {
                 style={{ textDecoration: "none" }}
                 onClick={() => {
                     changeRecipeLabel(recipeObj.recipe.label);
+                    forwardHandler();
                 }}
             >
                 <Card $imgUrl={recipeObj.recipe.image}>
@@ -62,6 +63,7 @@ function RecipeCard({ recipeObj, index }) {
 RecipeCard.propTypes = {
     recipeObj: PropTypes.object,
     index: PropTypes.number,
+    forwardHandler: PropTypes.func,
 };
 
 export default RecipeCard;
