@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { QueryContext } from "../contexts/Query.context";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer.component";
@@ -8,6 +8,10 @@ function RecipePage() {
     const { recipes, recipeLabel } = useContext(QueryContext);
 
     const recipe = recipes.find((recipeObj) => recipeObj.recipe.label === String(recipeLabel));
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     if (!recipe) {
         return (
