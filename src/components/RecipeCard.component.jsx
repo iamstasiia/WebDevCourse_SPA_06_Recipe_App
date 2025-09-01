@@ -45,15 +45,19 @@ function RecipeCard({ recipeObj, index, forwardHandler }) {
     return (
         <li key={index}>
             <NavLink
-                to={`/recipes/${recipeObj.recipe.label}`}
+                // to={`/recipes/${recipeObj.recipe.label}`}
+                to={`/recipes/${recipeObj.strMeal}`}
                 style={{ textDecoration: "none" }}
                 onClick={() => {
-                    changeRecipeLabel(recipeObj.recipe.label);
+                    // changeRecipeLabel(recipeObj.recipe.label);
+                    changeRecipeLabel(recipeObj.strMeal);
                     forwardHandler();
                 }}
             >
-                <Card $imgUrl={recipeObj.recipe.image}>
-                    <p>{recipeObj.recipe.label}</p>
+                {/* <Card $imgUrl={recipeObj.recipe.image}> */}
+                <Card $imgUrl={recipeObj.strMealThumb}>
+                    {/* <p>{recipeObj.recipe.label}</p> */}
+                    <p>{recipeObj.strMeal}</p>
                 </Card>
             </NavLink>
         </li>
