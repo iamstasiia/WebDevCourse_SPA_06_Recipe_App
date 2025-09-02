@@ -15,6 +15,7 @@ const Card = styled.div`
     &:after {
         content: "";
         background: url(${(props) => props.$imgUrl});
+        background-size: cover;
         width: 100%;
         z-index: -1;
         position: absolute;
@@ -46,18 +47,17 @@ function RecipeCard({ recipeObj, index, forwardHandler }) {
         <li key={index}>
             <NavLink
                 // to={`/recipes/${recipeObj.recipe.label}`}
-                to={`/recipes/${recipeObj.strMeal}`}
                 style={{ textDecoration: "none" }}
                 onClick={() => {
                     // changeRecipeLabel(recipeObj.recipe.label);
-                    changeRecipeLabel(recipeObj.strMeal);
+                    changeRecipeLabel(recipeObj.title);
                     forwardHandler();
                 }}
             >
                 {/* <Card $imgUrl={recipeObj.recipe.image}> */}
-                <Card $imgUrl={recipeObj.strMealThumb}>
+                <Card $imgUrl={recipeObj.image}>
                     {/* <p>{recipeObj.recipe.label}</p> */}
-                    <p>{recipeObj.strMeal}</p>
+                    <p>{recipeObj.title}</p>
                 </Card>
             </NavLink>
         </li>

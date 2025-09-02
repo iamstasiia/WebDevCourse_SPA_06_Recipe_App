@@ -23,15 +23,19 @@ export const QueryProvider = ({ children }) => {
     };
 
     useEffect(() => {
-        const apiId = import.meta.env.VITE_API_ID;
-        // const apiKey = import.meta.env.VITE_API_KEY;
+        // const apiId = import.meta.env.VITE_API_ID;
+        const apiKey = import.meta.env.VITE_API_KEY;
 
         const getRecipes = async () => {
             // const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${apiId}&app_key=${apiKey}`);
-            const response = await fetch(`https://www.themealdb.com/api/json/v1/${apiId}/filter.php?i=${query}`);
+            // const response = await fetch(`https://www.themealdb.com/api/json/v1/${apiId}/filter.php?i=${query}`);
+            const response = await fetch(
+                `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${query}&apiKey=${apiKey}`
+            );
+
             const data = await response.json();
             // setRecipes(data.hits);
-            setRecipes(data.meals);
+            setRecipes(data);
         };
 
         getRecipes();
