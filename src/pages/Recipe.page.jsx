@@ -1,5 +1,4 @@
-import { useContext, useState, useEffect } from "react";
-import { QueryContext } from "../contexts/Query.context";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer.component";
 import "./Recipe.page.scss";
