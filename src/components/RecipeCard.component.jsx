@@ -47,6 +47,7 @@ function RecipeCard({ recipeObj, index, forwardHandler }) {
         <li key={index}>
             <NavLink
                 // to={`/recipes/${recipeObj.recipe.label}`}
+                to={`/recipes/${recipeObj.id}`}
                 style={{ textDecoration: "none" }}
                 onClick={() => {
                     // changeRecipeLabel(recipeObj.recipe.label);
