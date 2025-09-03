@@ -11,7 +11,7 @@ header {
 
 main {
     width: 80%;
-    margin: 3rem auto;
+    margin: 2rem auto 1rem;
 
     h2 {
         font-weight: normal;
@@ -58,8 +58,7 @@ main {
         cursor: pointer;
         position: relative;
         background-color: rgba(0, 0, 0, 0);
-        text-shadow: -1px -1px 0 #ffe54c, 1px -1px 0 #ffe54c, -1px 1px 0 #ffe54c,
-            1px 1px 0 #ffe54c;
+        text-shadow: -1px -1px 0 #ffe54c, 1px -1px 0 #ffe54c, -1px 1px 0 #ffe54c, 1px 1px 0 #ffe54c;
         -webkit-text-stroke: 1px #ffe54c;
     }
 

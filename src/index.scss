@@ -1,19 +1,27 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 :root {
-  font-size: 16px;
-  font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    font-family: "Courier New", Courier, monospace;
+}
+
+#root {
+    min-height: 100vh;
+    width: 100%;
+    display: grid;
+    grid-template-rows: min-content auto min-content;
+    gap: 1rem;
 }
 
 body {
-  background: #f8f8f8;
+    background: #f8f8f8;
 }
 
 footer {
-  text-align: center;
-  margin: 3rem 2rem 2rem;
+    text-align: center;
+    padding: 2rem 2rem 2rem;
 }
