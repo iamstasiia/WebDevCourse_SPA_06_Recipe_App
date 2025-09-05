@@ -19,7 +19,6 @@ function RecipePage() {
             // );
             const response = await fetch(`https://www.themealdb.com/api/json/v1/${apiId}/lookup.php?i=${dishId}&`);
             const data = await response.json();
-            console.log(data.meals[0]);
 
             setRecipe(data.meals[0]);
         };
