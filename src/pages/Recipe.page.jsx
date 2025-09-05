@@ -11,13 +11,17 @@ function RecipePage() {
 
     useEffect(() => {
         const getRecipe = async () => {
-            const apiKey = import.meta.env.VITE_API_KEY;
-            const response = await fetch(
-                `https://api.spoonacular.com/recipes/${dishId}/information?includeNutrition=false&apiKey=${apiKey}`
-            );
-            const data = await response.json();
+            // const apiKey = import.meta.env.VITE_API_KEY;
+            const apiId = import.meta.env.VITE_API_ID;
 
-            setRecipe(data);
+            // const response = await fetch(
+            //     `https://api.spoonacular.com/recipes/${dishId}/information?includeNutrition=false&apiKey=${apiKey}`
+            // );
+            const response = await fetch(`https://www.themealdb.com/api/json/v1/${apiId}/lookup.php?i=${dishId}&`);
+            const data = await response.json();
+            console.log(data.meals[0]);
+
+            setRecipe(data.meals[0]);
         };
 
         getRecipe();
@@ -40,41 +44,57 @@ function RecipePage() {
 
     return (
         <div className="recipe-page-container">
-            <div className="recipe-img" style={{ backgroundImage: `url(${recipe.image})` }}></div>
+            <div className="recipe-img" style={{ backgroundImage: `url(${recipe.strMealThumb})` }}></div>
             <article>
-                {/* <p className="meal-type">{recipe.recipe.mealType}</p> */}
-                <h1>{recipe.title}</h1>
+                <p className="meal-type">
+                    {recipe.strArea} {recipe.strCategory?.toLowerCase()}
+                </p>
+                <h1>{recipe.strMeal}</h1>
 
                 <div className="serving-group">
-                    <div>
-                        {/* <strong>{Math.round(recipe.recipe.calories / recipe.recipe.yield)}</strong> */}
+                    {/* <div>
+                        <strong>{Math.round(recipe.recipe.calories / recipe.recipe.yield)}</strong>
                         <p>calories/serving</p>
                     </div>
                     <div>
-                        {/* <strong>{recipe.recipe.yield}</strong> */}
+                        <strong>{recipe.recipe.yield}</strong>
                         <p>servings</p>
                     </div>
                     <div>
-                        {/* <strong>
+                        <strong>
                             {Math.round(recipe.recipe.digest[0].total / recipe.recipe.yield)}g (
                             {Math.round(recipe.recipe.digest[0].daily / recipe.recipe.yield)}
                             %)
-                        </strong> */}
+                        </strong>
                         <p>fat</p>
-                    </div>
+                    </div> */}
                 </div>
 
                 <h3>Ingredients:</h3>
                 <ul className="ingredients-group">
-                    {recipe.extendedIngredients.map((item, index) => (
-                        <li key={index}>{item.original}</li>
-                    ))}
+                    {Array.from({ length: 20 }, (_, i) => {
+                        const ingredient = recipe[`strIngredient${i + 1}`];
+                        const measure = recipe[`strMeasure${i + 1}`];
+                        return (
+                            ingredient &&
+                            ingredient.trim() !== "" && (
+                                <li key={i}>
+                                    {measure} {ingredient}
+                                </li>
+                            )
+                        );
+                    })}
                 </ul>
 
                 <h3>Instructions:</h3>
-                {recipe.analyzedInstructions.steps.map((item, index) => (
-                    <li key={index}>{item.step}</li>
-                ))}
+                {recipe.strInstructions
+                    ?.split(/\r?\n\r?\n+/)
+                    .map((p) => p.trim())
+                    .map((paragraph, index) => (
+                        <p className="instrParagraph" key={index}>
+                            {paragraph}
+                        </p>
+                    ))}
 
                 <Link to="/recipes" className="go-back-button">
                     Go back
